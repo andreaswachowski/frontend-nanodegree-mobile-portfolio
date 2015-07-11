@@ -1,34 +1,40 @@
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+Optimized portfolio page for Udacity front-end web developer nanodegree.
 
-To get started, check out the repository, inspect the code,
+### Background
+* [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
-### Getting started
+### Install
 
-####Part 1: Optimize PageSpeed Insights score for index.html
+* Clone the git repository to a local directory. In order to perform the
+  PageSpeed tests automatically with grunt and ngrok, clone it to a
+  location that's accessible from a local web server (or make the location
+  accessible).
+* Call [grunt](http://gruntjs.com/getting-started) (assumes grunt-cli is already installed):
+  1. Change to the project's root directory
+  2. Run ```npm install```
+  3. Run Grunt with ```grunt```
+     Grunt will concatenate, minify, fingerprint the assets (HTML, CSS, JS)
+     as required. Afterwards, the processed files can be found in the
+     ```dist``` directory (below the project's root directory).
 
-Some useful tips to help you get started:
+     Open ```dist/index.html``` in a local browser to see the result.
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+####Part 1: Test PageSpeed Insights score for index.html
+
+4. Run ```grunt test``` for PageSpeed analysis
+
+To run a local server, do
 
   ```bash
   $> cd /path/to/your-project-folder
   $> python -m SimpleHTTPServer 8080
   ```
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
-
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ngrok 8080
-  ```
-
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+Alternatively, for example, [configure Apache for Mac OS
+X](http://osxdaily.com/2012/09/02/start-apache-web-server-mac-os-x/). In
+that case, the project is preferrably located under ```~/Sites```.
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
@@ -36,7 +42,7 @@ To optimize views/pizza.html, you will need to modify views/js/main.js until you
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
-### Optimization Tips and Tricks
+### Background information on optimization
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
 * [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
 * [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
