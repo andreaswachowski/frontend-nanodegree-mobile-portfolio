@@ -13,10 +13,11 @@ The project required to submit both source and production code, so just
 navigate to ```dist/index.html``` to see the result for the
 index-optimization, and to ``views/pizza.html``` for the FPS-assignment.
 
-To install via the grunt pipeline (which will delete and overwrite the
-contents in dist), do as follows:
+The first part of the project has been augmented with a grunt pipeline.
+To prepare the ```dist``` files via that, do as follows. Note that will
+delete and overwrite the contents of the ```dist```-directory.
 
-Call [grunt](http://gruntjs.com/getting-started) (assumes grunt-cli is already installed):
+Call [grunt](http://gruntjs.com/getting-started) (assumes ```grunt-cli``` is already installed):
   1. Change to the project's root directory
   2. Run ```npm install```
   3. Run Grunt with ```grunt```
@@ -26,26 +27,15 @@ Call [grunt](http://gruntjs.com/getting-started) (assumes grunt-cli is already i
 
      Open ```dist/index.html``` in a local browser to see the result.
 
-In order to perform the PageSpeed tests automatically with grunt and
-ngrok, make sure the ``dist```-location is accessible from a local web
-server (or make the location accessible).
-
 ####Part 1: Test PageSpeed Insights score for index.html
 
-1. Adapt the 'paths'-variables in the pagespeed task in the Gruntfile to
-   match your environment.
-2. Run ```grunt test``` for PageSpeed analysis
+  1. Start a local server with
 
-To run a local server, do
-
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
-
-Alternatively, for example, [configure Apache for Mac OS
-X](http://osxdaily.com/2012/09/02/start-apache-web-server-mac-os-x/). In
-that case, the project is preferrably located under ```~/Sites```.
+     ```bash
+     $> cd /path/to/your-project-folder/dist
+     $> python -m SimpleHTTPServer 8080
+     ```
+  2. Execute ```grunt test```
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
