@@ -497,7 +497,13 @@ function updatePositions() {
   var scrollTop = document.body.scrollTop;
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    // I had the idea to use transform:translate instead of reassigning the
+    // left-property, because transform only triggers composite, not layout and
+    // paint (see csstriggers.com). I could not see a difference in the
+    // measurements in the timeline however, so I am not sure that this change
+    // is really helpful.
+    // items[i].style.left = items[i].basicLeft + 100 * phase + 'px'; // original
+    items[i].style.transform = 'translate(' + 100 * phase + 'px, 0px)'; // new
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -515,18 +521,30 @@ window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
-  var cols = 8;
+  // Previously, the number of moving pizzas was hardcoded to 200,
+  // resulting in a large loading time, and in particular, an excessive amount
+  // for Composite-Layers during scrolling (during updatePositions)
+  // Instead, we now dynamically calculate the number of required pizzas
+  // based on the viewport size:
   var s = 256;
+  var cols = Math.floor(window.innerWidth / s);
+  var rows = Math.floor(window.innerHeight / s);
+  var numPizzas = cols * rows;
   // It's sufficient to run the (expensive) querySelector once, outside the
   // loop -> time to generate pizzas on load down from 36ms to 20ms
   var movingPizzas = document.querySelector("#movingPizzas1");
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < numPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
+    elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    // I set "left" directly, and later don't recalculate it, but apply
+    // transform:translate to update the position.
+    // See further explanation in updatePositions().
+    // elem.basicLeft = (i % cols) * s; // original: set left in loop
+    elem.style.left = (i % cols) * s + 'px'; // new: set left only once
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     movingPizzas.appendChild(elem);
   }
