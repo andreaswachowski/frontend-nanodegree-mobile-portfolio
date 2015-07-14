@@ -17,14 +17,14 @@ To install via the grunt pipeline (which will delete and overwrite the
 contents in dist), do as follows:
 
 Call [grunt](http://gruntjs.com/getting-started) (assumes grunt-cli is already installed):
-1. Change to the project's root directory
-2. Run ```npm install```
-3. Run Grunt with ```grunt```
-   Grunt will concatenate, minify, fingerprint the assets (HTML, CSS, JS)
-   as required. Afterwards, the processed files can be found in the
-   ```dist``` directory (below the project's root directory).
+  1. Change to the project's root directory
+  2. Run ```npm install```
+  3. Run Grunt with ```grunt```
+     Grunt will concatenate, minify, fingerprint the assets (HTML, CSS, JS)
+     as required. Afterwards, the processed files can be found in the
+     ```dist``` directory (below the project's root directory).
 
-   Open ```dist/index.html``` in a local browser to see the result.
+     Open ```dist/index.html``` in a local browser to see the result.
 
 In order to perform the PageSpeed tests automatically with grunt and
 ngrok, make sure the ``dist```-location is accessible from a local web
@@ -70,27 +70,3 @@ tools. The following fixes to improve performance have been applied:
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer.html">Reduce the size of text</a>
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
-
-### Customization with Bootstrap
-The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstrap</a> framework. All custom styles are in `dist/css/portfolio.css` in the portfolio repo.
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
-
-### Sample Portfolios
-
-Feeling uninspired by the portfolio? Here's a list of cool portfolios I found after a few minutes of Googling.
-
-* <a href="http://www.reddit.com/r/webdev/comments/280qkr/would_anybody_like_to_post_their_portfolio_site/">A great discussion about portfolios on reddit</a>
-* <a href="http://ianlunn.co.uk/">http://ianlunn.co.uk/</a>
-* <a href="http://www.adhamdannaway.com/portfolio">http://www.adhamdannaway.com/portfolio</a>
-* <a href="http://www.timboelaars.nl/">http://www.timboelaars.nl/</a>
-* <a href="http://futoryan.prosite.com/">http://futoryan.prosite.com/</a>
-* <a href="http://playonpixels.prosite.com/21591/projects">http://playonpixels.prosite.com/21591/projects</a>
-* <a href="http://colintrenter.prosite.com/">http://colintrenter.prosite.com/</a>
-* <a href="http://calebmorris.prosite.com/">http://calebmorris.prosite.com/</a>
-* <a href="http://www.cullywright.com/">http://www.cullywright.com/</a>
-* <a href="http://yourjustlucky.com/">http://yourjustlucky.com/</a>
-* <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
-* <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
-* <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>
