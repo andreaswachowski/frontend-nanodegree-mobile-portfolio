@@ -33,6 +33,7 @@ module.exports = function(grunt) {
                 files: [{
                     dot: true,
                     src: [
+                        '.tmp',
                         '<%= config.dist %>/*'
                     ]
                 }
