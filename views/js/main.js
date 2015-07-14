@@ -494,16 +494,27 @@ function updatePositions() {
 
   var items = document.querySelectorAll('.mover');
   // Keep the call to scrollTop, which forces layout, outside the loop
+  // I really wish I would think I could completely get rid of scrollTop,
+  // but I don't see how.
   var scrollTop = document.body.scrollTop;
+
+  // precalculate the 5 phase values, to be used in the subsequent loop
+  var phase = [];
+  for (var j = 0; j<5; j++) {
+      phase.push(Math.sin((scrollTop / 1250) + j));
+  }
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((scrollTop / 1250) + (i % 5));
     // I had the idea to use transform:translate instead of reassigning the
     // left-property, because transform only triggers composite, not layout and
-    // paint (see csstriggers.com). I could not see a difference in the
-    // measurements in the timeline however, so I am not sure that this change
-    // is really helpful.
+    // paint (see csstriggers.com). The timeline indeed now misses "Layout"
+    // between "Recalculate Style" and "Update Layer Tree", but the
+    // measurements don't change much.
+    // Oh well, and now I read on
+    // https://github.com/udacity/fend-office-hours/tree/master/Web%20Optimization/Effective%20Optimizations%20for%2060%20FPS
+    // that that's not news. :-)
     // items[i].style.left = items[i].basicLeft + 100 * phase + 'px'; // original
-    items[i].style.transform = 'translate(' + 100 * phase + 'px, 0px)'; // new
+    items[i].style.transform = 'translate(' + 100 * phase[i%5] + 'px, 0px)'; // new
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
