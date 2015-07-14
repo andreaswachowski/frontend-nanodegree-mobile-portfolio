@@ -527,8 +527,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Instead, we now dynamically calculate the number of required pizzas
   // based on the viewport size:
   var s = 256;
-  var cols = Math.floor(window.innerWidth / s);
-  var rows = Math.floor(window.innerHeight / s);
+  // +1 for cols and rows to make sure that pizzas slide in from the right
+  // margin, and that clipped versions can appear at the bottom:
+  var cols = Math.floor(window.innerWidth / s)+1;
+  var rows = Math.floor(window.innerHeight / s)+1;
   var numPizzas = cols * rows;
   // It's sufficient to run the (expensive) querySelector once, outside the
   // loop -> time to generate pizzas on load down from 36ms to 20ms
