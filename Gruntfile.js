@@ -53,13 +53,13 @@ module.exports = function(grunt) {
             desktop: {
                 options: {
                     strategy: 'desktop',
-                    paths: [ '/~andreas/perf/index.html' ]
+                    paths: [ '/~andreas/perf/dist/index.html' ]
                 }
             },
             mobile: {
                 options: {
                     strategy: 'mobile',
-                    paths: [ '/~andreas/perf/index.html' ]
+                    paths: [ '/~andreas/perf/dist/index.html' ]
                 }
             }
         },
@@ -159,7 +159,7 @@ module.exports = function(grunt) {
     // http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/
     grunt.registerTask('psi-ngrok', 'Run pagespeed with ngrok', function() {
         var done = this.async();
-        var port = 8000;
+        var port = 80;
         ngrok.connect(port, function(err, url) {
             if (err !== null) {
                 grunt.fail.fatal(err);
