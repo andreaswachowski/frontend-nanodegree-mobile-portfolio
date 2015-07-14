@@ -406,13 +406,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -437,7 +437,7 @@ var resizePizzas = function(size) {
       default:
           console.log("Bug in changePizzaSizes");
     }
-    var pizzas = document.querySelectorAll(".randomPizzaContainer");
+    var pizzas = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < pizzas.length; i++) {
       var newwidth = newWidth + '%';
       pizzas[i].style.width = newwidth;
@@ -492,7 +492,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');
   // Keep the call to scrollTop, which forces layout, outside the loop
   // I really wish I would think I could completely get rid of scrollTop,
   // but I don't see how.
@@ -543,9 +543,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = Math.floor(window.innerWidth / s)+1;
   var rows = Math.floor(window.innerHeight / s)+1;
   var numPizzas = cols * rows;
-  // It's sufficient to run the (expensive) querySelector once, outside the
+  // It's sufficient to run getElementById once, outside the
   // loop -> time to generate pizzas on load down from 36ms to 20ms
-  var movingPizzas = document.querySelector("#movingPizzas1");
+  var movingPizzas = document.getElementById("movingPizzas1");
   for (var i = 0; i < numPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';

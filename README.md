@@ -44,6 +44,8 @@ tools. The following fixes to improve performance have been applied (detailed co
   to avoid repeated forced layout synchronizations
 * Calculate the necessary number of moving pizzas dynamically based on viewport size (instead of hardcoding 200)
 * Precalculate the 5 phase values outside the items-loop in ```updatePositions()```.
+* Replaced ```querySelectorAll``` and ```querySelector``` with ```getElementsByClassName```
+  and ```getElementsById```, respectively (that's possible here)
 
 ### Using the grunt development pipeline
 The first part of the project (index.html optimization) has been automated
