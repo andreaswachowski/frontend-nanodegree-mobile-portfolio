@@ -11,7 +11,7 @@ Optimized portfolio page for Udacity front-end web developer nanodegree.
 Clone the git repository to a local directory. That's it!
 The project required to submit both source and production code, so just
 navigate to ```dist/index.html``` to see the result for the
-index-optimization, and to ``views/pizza.html``` for the FPS-assignment.
+index-optimization, and to ```views/pizza.html``` for the FPS-assignment.
 
 The first part of the project has been augmented with a grunt pipeline.
 To prepare the ```dist``` files via that, do as follows. Note that will
