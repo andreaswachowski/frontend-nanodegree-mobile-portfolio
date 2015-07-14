@@ -3,27 +3,38 @@
 Optimized portfolio page for Udacity front-end web developer nanodegree.
 
 ### Background
-* [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+* [Udacity Course "Website Performance Optimization"](https://www.udacity.com/course/ud884).
+* [Udacity Course "Browser Rendering Optimization"](https://www.udacity.com/course/ud884).
 
 ### Install
 
-* Clone the git repository to a local directory. In order to perform the
-  PageSpeed tests automatically with grunt and ngrok, clone it to a
-  location that's accessible from a local web server (or make the location
-  accessible).
-* Call [grunt](http://gruntjs.com/getting-started) (assumes grunt-cli is already installed):
-  1. Change to the project's root directory
-  2. Run ```npm install```
-  3. Run Grunt with ```grunt```
-     Grunt will concatenate, minify, fingerprint the assets (HTML, CSS, JS)
-     as required. Afterwards, the processed files can be found in the
-     ```dist``` directory (below the project's root directory).
+Clone the git repository to a local directory. That's it!
+The project required to submit both source and production code, so just
+navigate to ```dist/index.html``` to see the result for the
+index-optimization, and to ``views/pizza.html``` for the FPS-assignment.
 
-     Open ```dist/index.html``` in a local browser to see the result.
+To install via the grunt pipeline (which will delete and overwrite the
+contents in dist), do as follows:
+
+Call [grunt](http://gruntjs.com/getting-started) (assumes grunt-cli is already installed):
+1. Change to the project's root directory
+2. Run ```npm install```
+3. Run Grunt with ```grunt```
+   Grunt will concatenate, minify, fingerprint the assets (HTML, CSS, JS)
+   as required. Afterwards, the processed files can be found in the
+   ```dist``` directory (below the project's root directory).
+
+   Open ```dist/index.html``` in a local browser to see the result.
+
+In order to perform the PageSpeed tests automatically with grunt and
+ngrok, make sure the ``dist```-location is accessible from a local web
+server (or make the location accessible).
 
 ####Part 1: Test PageSpeed Insights score for index.html
 
-4. Run ```grunt test``` for PageSpeed analysis
+1. Adapt the 'paths'-variables in the pagespeed task in the Gruntfile to
+   match your environment.
+2. Run ```grunt test``` for PageSpeed analysis
 
 To run a local server, do
 
@@ -38,9 +49,15 @@ that case, the project is preferrably located under ```~/Sites```.
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+Load views/pizza.html in a browser and play with it using Chrome developer
+tools. The following fixes to improve performance have been applied:
+* No repeated forced layout synchronizations anymore in ```changePizzaSizes```,
+  also use relative sizing and get rid of ```determineDx```
+* Move DOM-queries outside of loops where possible
+* Move request to ```document.scrollTop``` outside of loop in ```updatePositions()```
+  to avoid repeated forced layout synchronizations
+* Calculate the number of moving pizzas dynamically based on viewport size
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
 ### Background information on optimization
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
